@@ -49,14 +49,10 @@ class Node:
         """
         Heuristic for the A*
         """
-        dy = self.pos_x - self.goal_x
-        dx = self.pos_y - self.goal_y
-        if HEURISTIC == 1:
-            return abs(dx) + abs(dy)
-        return sqrt(dy ** 2 + dx ** 2)
+        pass
 
     def print(self):
-        print("Node : <State = [x=%d; y=%d; t=%d]>" % (self.pos_x, self.pos_y, self.t))
+        pass
 
     def __str__(self):
         return "Node : <State = [x=%d; y=%d; t=%d]>" % (self.pos_x, self.pos_y, self.t)

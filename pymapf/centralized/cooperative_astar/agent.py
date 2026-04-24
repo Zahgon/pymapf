@@ -20,40 +20,7 @@ class Agent:
         self.allow_diagonals = allow_diagonals
 
     def in_conflict(self, current_state, future_state, other_agents_paths):
-        for key, val in other_agents_paths.items():
-            if key == self.ident:
-                continue
-
-            try:
-                if future_state.x == val[-1].x and future_state.y == val[-1].y:
-                    logging.debug(
-                        "Found conflict between agent %s and agent %s"
-                        % (self.ident, key)
-                    )
-                    return True
-            except BaseException as e:
-                logging.debug("Agent %s path is empty: %s" % (key, str(e)))
-
-            if self.allow_diagonals:
-                conflicts = [
-                    future_state,
-                    current_state,
-                ]
-            else:
-                conflicts = [
-                    future_state,
-                    current_state,
-                ]
-
-            for c in conflicts:
-                if c in val:
-                    logging.warning(
-                        "Found conflict between agent %s and agent %s"
-                        % (self.ident, key)
-                    )
-                    self.conflicts_found += 1
-                    return True
-        return False
+        pass
 
     def __str__(self):
         return "Id: %d | Init: [%d;%d] | Goal: [%d;%d]" % (

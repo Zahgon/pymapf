@@ -24,43 +24,13 @@ class CooperativeAStar:
         coloredlogs.install(level=log_level)
 
     def register_agent(self, ident, start, goal):
-        if ident in self.agents:
-            logging.warning("Agent ID already registered, ignoring...")
-            return
-        self.agents[ident] = Agent(
-            ident, start, goal, allow_diagonals=self.allow_diagonals
-        )
-        self.paths[ident] = [State(start[1], start[0], 0)]
+        pass
 
     def run_simulation(self):
-        for _, agent in self.agents.items():
-            astar = AStar(agent, self.world, self.paths)
-            self.paths[agent.ident] = astar.search()
-            try:
-                self.searches_sim_times.append(self.paths[agent.ident][-1].t)
-            except BaseException as e:
-                logging.debug(e)
-
-        self.simulation_complete = True
+        pass
 
     def visualize(self, save_file):
-        if not self.simulation_complete:
-            logging.warning("Simulation isn't yet complete: can't visualize.")
-            return
-        anim = Animator(
-            self.world, self.paths, self.agents, max(self.searches_sim_times)
-        )
-        anim.save(save_file)
-        anim.show()
+        pass
 
     def __init_logger(self, log_level):
-        import os
-
-        if not os.path.exists("logs"):
-            os.makedirs("logs")
-        logging.basicConfig(
-            filename="logs/main.log",
-            format="%(levelname)s:%(message)s",
-            filemode="w",
-            level=log_level,
-        )
+        pass
